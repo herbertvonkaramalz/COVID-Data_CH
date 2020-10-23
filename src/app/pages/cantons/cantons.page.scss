@@ -1,0 +1,54 @@
+ion-toolbar {
+  --background: white;
+  --color: var(--ion-color-primary);
+}
+
+ion-toolbar ion-button,
+ion-toolbar ion-back-button,
+ion-toolbar ion-menu-button {
+  --color: var(--ion-color-primary);
+}
+
+ion-note {
+  font-size: 12px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.center {
+  text-align: center;
+}
+
+.about-info p {
+  line-height: 130%;
+
+  color: var(--ion-color-dark);
+}
+
+ion-card-content {
+  .chars {
+    font-size: 25px;
+    font-family: "Roboto Mono", monospace;
+  }
+  .loading {
+      font-size: 12px;
+      font-family: "Roboto Mono", monospace;
+  }
+
+  text-align: center;
+}
+
+.list a.item
+{
+border-top: 0px;
+border-left: 0px;
+border-right: 0px;
+border-bottom: 0px;
+}
+
+ion-card {
+  text-align: center;
+
+  ion-card-title {
+    padding-top: 20px;
+  }
+}

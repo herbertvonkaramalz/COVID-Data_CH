@@ -1,0 +1,215 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="image-header">
+    <div class="header-image switzerland"></div>
+  </div>
+
+  <div class="about-info">
+    <div class="title">
+      <ion-card-title style="font-size: x-large">
+        <b>
+          {{ 'SWITZERLAND.title' | translate }}
+        </b>
+      </ion-card-title>
+    </div>
+
+    <ion-card>
+      <ion-card-title>
+        {{ 'SWITZERLAND.changesTitle' | translate }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ 'SWITZERLAND.changesDescription' | translate }}
+      </ion-card-subtitle>
+      <ion-card-content>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.casesChanged' | translate }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.changes.cases }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.fatalityChanged' | translate
+              }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.changes.fatalities }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.hospitalizedChanged' | translate
+              }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.changes.hospitalized }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-subtitle>
+                        {{ 'SWITZERLAND.partInICU' | translate
+              }}
+                      </ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <p class="chars" *ngIf="dataLoaded">
+                        {{ dataSwitzerland.changes.icu }}
+                      </p>
+                      <p class="loading" *ngIf="!dataLoaded">
+                        <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+                        {{ 'APP.loading' | translate }}
+                      </p>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-subtitle>
+                        {{ 'SWITZERLAND.partWithVent' | translate
+                      }} </ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <p class="chars" *ngIf="dataLoaded">
+                        {{ dataSwitzerland.changes.vent }}
+                      </p>
+                      <p class="loading" *ngIf="!dataLoaded">
+                        <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+                        {{ 'APP.loading' | translate }}
+                      </p>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ion-card-content>
+        </ion-card>
+        <p *ngIf="dataLoaded">
+          {{ 'SWITZERLAND.completionDisclaimer' | translate }}<br /><br />
+          <b>{{ 'SWITZERLAND.todayUpdated' | translate }}</b>
+          {{ dataSwitzerland.updated_cantons }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-title>
+        {{ 'SWITZERLAND.totalsTitle' | translate }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ 'SWITZERLAND.totalsDescription' | translate }}
+      </ion-card-subtitle>
+      <ion-card-content>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.caseTotals' | translate }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.totals.cases }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.fatalityTotals' | translate }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.totals.fatalities }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.testTotals' | translate }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.totals.tested }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ 'SWITZERLAND.releasedTotals' | translate }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="chars" *ngIf="dataLoaded">
+              {{ dataSwitzerland.totals.released }}
+            </p>
+            <p class="loading" *ngIf="!dataLoaded">
+              <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+              {{ 'APP.loading' | translate }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="center">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <sup>{{ 'SOURCE.data' | translate }}</sup><br />
+            <img src="https://avatars2.githubusercontent.com/u/37435832?s=200&v=4" width="45px;" />
+          </ion-col>
+          <ion-col>
+            <sup>{{ 'SOURCE.images' | translate }}</sup><br />
+            <img src="https://unsplash-assets.imgix.net/marketing/press-logotype.svg?auto=format&fit=crop&q=60"
+              width="75px;" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

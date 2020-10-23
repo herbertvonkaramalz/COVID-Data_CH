@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> {{ 'CANTONS.title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div class="cantonContents" *ngIf="dataLoaded">
+        <ion-card *ngFor="let canton of dataCantons.records">
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-avatar slot="end">
+                <img  [src]="'./../../../assets/img/cantons/' + canton.abbreviation_canton_and_fl + '.png'">
+              </ion-avatar>
+              <ion-label style="font-size: 20px; font-weight: bold;">
+                {{ 'CANTONS.'+canton.abbreviation_canton_and_fl | translate }}</ion-label>
+            </ion-item>
+            <ion-list>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.hospitalized' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ canton.current_hosp_fwd  || 'APP.unknownData' | translate  }}
+                </ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.atICU' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ canton.current_icu_fwd  || 'APP.unknownData' | translate  }}
+                </ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.withHelp' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ canton.current_vent_fwd  || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>{{ 'CANTONS.inQurantine' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ canton.current_quarantined || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>{{ 'CANTONS.deaths' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ canton.ncuml_deceased_fwd || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+            </ion-list>
+            <ion-chip color="primary">
+              <ion-label style="font-size: 9px;"color="dark">{{ 'APP.refreshedAt' | translate }} {{ canton.date | date:'d.MM.y'}} {{ 'APP.atTime'| translate }} {{ canton.time || '00:00'}}
+            </ion-label>
+            </ion-chip>
+            
+            <ion-chip (click)="openSource(canton.source)" color="tertiary">
+              <ion-label style="font-size: 9px;"color="dark">{{ 'APP.tapForSource' | translate }}
+            </ion-label>
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-avatar slot="end">
+                <img  [src]="'./../../../assets/img/cantons/FL.png'">
+              </ion-avatar>
+              <ion-label style="font-size: 20px; font-weight: bold;">
+                {{ 'CANTONS.FL' | translate }}</ion-label>
+            </ion-item>
+            <ion-list>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.hospitalized' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ dataFl['records'][0].current_hosp_fwd  || 'APP.unknownData' | translate  }}
+                </ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.atICU' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ dataFl['records'][0].current_icu_fwd  || 'APP.unknownData' | translate  }}
+                </ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ 'CANTONS.withHelp' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ dataFl['records'][0].current_vent_fwd  || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>{{ 'CANTONS.inQurantine' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ dataFl['records'][0].current_quarantined || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>{{ 'CANTONS.deaths' | translate }}</ion-label>
+                <ion-note slot="end" color="primary">{{ dataFl['records'][0].ncuml_deceased_fwd || 'APP.unknownData' | translate }}
+                </ion-note>
+              </ion-item>
+            </ion-list>
+            <ion-chip color="primary">
+              <ion-label style="font-size: 9px;"color="dark">{{ 'APP.refreshedAt' | translate }} {{ dataFl['records'][0].date | date:'d.MM.y'}} {{ 'APP.atTime'| translate }} {{ dataFl['records'][0].time || '00:00'}}
+              </ion-label>
+            </ion-chip>
+            
+            <ion-chip (click)="openSource(dataFl['records'][0].source)" color="tertiary">
+              <ion-label style="font-size: 9px;"color="dark">{{ 'APP.tapForSource' | translate }}
+            </ion-label>
+            </ion-chip>
+          </ion-card-content>
+        </ion-card>
+        
+      </div>
+      <p class="loading" *ngIf="!dataLoaded">
+        <ion-spinner name="crescent" color="primary"></ion-spinner><br>
+        {{ 'APP.loading' | translate }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+
+  <div class="center">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <sup>{{ 'SOURCE.data' | translate }}</sup><br />
+          <img src="https://avatars2.githubusercontent.com/u/37435832?s=200&v=4" width="45px;" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <ion-list lines="none">
+          <ion-list-header>
+            {{ 'APP.title' | translate }}
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false">
+
+            <ion-item routerLink="/app/tabs/switzerland" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" src="../../assets/img/tabicons/switzerland.svg"></ion-icon>
+              <ion-label>
+                {{ 'TABS.firstTab' | translate }}
+              </ion-label>
+            </ion-item>
+
+            <ion-item routerLink="/app/tabs/cantons" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="search-outline"></ion-icon>
+              <ion-label>
+                {{ 'TABS.secondTab' | translate }}
+              </ion-label>
+            </ion-item>
+
+            <ion-item routerLink="/app/tabs/symptoms" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" src="../../assets/img/tabicons/symptoms.svg"></ion-icon>
+              <ion-label>
+                {{ 'TABS.thirdTab' | translate }}
+              </ion-label>
+            </ion-item>
+
+            <ion-item routerLink="/app/tabs/about" routerLinkActive="selected" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="information-circle"></ion-icon>
+              <ion-label>
+                {{ 'TABS.fourthTab' | translate }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list lines="none">
+          <ion-menu-toggle autoHide="false">
+            <ion-item button (click)="openTutorial()" detail="false">
+              <ion-icon slot="start" name="hammer"></ion-icon>
+              <ion-label>{{ 'APP.tutorial' | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  </ion-split-pane>
+
+</ion-app>

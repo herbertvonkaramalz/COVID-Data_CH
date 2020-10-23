@@ -1,0 +1,7 @@
+{
+  "name": "CovidDataCH",
+  "type": "angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
